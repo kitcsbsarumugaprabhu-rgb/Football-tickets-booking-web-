@@ -1,4 +1,5 @@
 # Fifa-tickets-booking-web-
+A stylish and responsive front-end web project built using HTML, CSS, and JavaScript, designed for Real Madrid fans to explore upcoming matches, book tickets, and submit feedback. Features a white & fifa theme inspired by fifa theme, interactive booking forms, hover animations, and a smooth fan-focused UI.
 <!DOCTYPE html>
 <html lang="en">
 <head>
