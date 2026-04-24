@@ -1,15 +1,16 @@
-# Football-tickets-booking-web-
+# Fifa-tickets-booking-web-
 A stylish and responsive front-end web project built using HTML, CSS, and JavaScript, designed for Real Madrid fans to explore upcoming matches, book tickets, and submit feedback. Features a yellow &amp; white theme inspired by Real Madrid, interactive booking forms, hover animations, and a smooth fan-focused UI.
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Real Madrid Tickets | Fan Portal</title>
+<title>FIFA World Cup Tickets | Fan Portal</title>
 
 <style>
 :root {
-    --yellow: #FFD700;
+    --primary: #0b3d91;
+    --accent: #f5c518;
     --white: #ffffff;
     --dark: #111;
 }
@@ -17,196 +18,207 @@ A stylish and responsive front-end web project built using HTML, CSS, and JavaSc
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: var(--white);
-    color: var(--dark);
 }
+
+/* HEADER */
 header {
-    background: var(--white);
-    border-bottom: 4px solid var(--yellow);
-    padding: 15px 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.logo {
-    width: 55px;
-    height: 55px;
-}
-
-header h1 {
-    margin: 0;
-    color: #000;
-}
-.hero {
-    background: linear-gradient(135deg, var(--yellow), #fff3b0);
-    height: 380px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background: var(--primary);
+    color: white;
+    padding: 15px;
     text-align: center;
 }
 
-.hero h2 {
-    font-size: 48px;
-    margin-bottom: 10px;
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, var(--primary), #1e5ed6);
+    color: white;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+/* SECTION */
 section {
-    padding: 60px 20px;
+    padding: 50px 20px;
     max-width: 1100px;
     margin: auto;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 40px;
-}
+/* MATCH CARDS */
 .matches {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .match {
-    background: var(--white);
-    border: 2px solid var(--yellow);
-    padding: 25px;
-    border-radius: 15px;
+    border: 2px solid var(--accent);
+    padding: 20px;
+    border-radius: 10px;
     text-align: center;
     transition: 0.3s;
 }
 
 .match:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    transform: scale(1.05);
 }
 
+/* FORM */
 form {
-    background: #fffef5;
-    padding: 30px;
-    border-radius: 15px;
-    border: 2px solid var(--yellow);
+    border: 2px solid var(--accent);
+    padding: 25px;
+    border-radius: 10px;
+    background: #f9f9f9;
 }
 
 input, select, textarea, button {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 15px;
 }
 
 button {
-    background: var(--yellow);
+    background: var(--accent);
     border: none;
     font-weight: bold;
     cursor: pointer;
 }
 
 button:hover {
-    background: #ffcc00;
+    background: #e0b000;
 }
 
+.success {
+    color: green;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* FOOTER */
 footer {
     background: var(--dark);
     color: white;
     text-align: center;
-    padding: 40px;
+    padding: 20px;
 }
 </style>
 </head>
 
 <body>
+
 <header>
-    <div class="header-content">
-        <h1>REAL MADRID FC</h1>
-        <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" class="logo" alt="Football Logo">
-    </div>
+    <h1>🏆 FIFA WORLD CUP 2026</h1>
 </header>
+
 <div class="hero">
-    <h2> Book Your Match Tickets </h2>
-    <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" class="logo" alt="Football Logo">
-    <p>Yellow & White | Premium Fan Experience</p>
+    <h2>⚽ Book Your Match Tickets</h2>
+    <p>Global Football Experience 🌍</p>
 </div>
+
 <section>
-<h2>Upcoming Premier League Matches</h2>
+<h2>Upcoming Matches</h2>
 
 <div class="matches">
     <div class="match">
-        <h3>Real Madrid vs Manchester City</h3>
-        <p>📅 10 March 2026</p>
-        <p>🏟️ Santiago Bernabéu</p>
+        <h3>Argentina vs Brazil</h3>
+        <p>📅 12 June 2026</p>
+        <p>🏟️ New York Stadium</p>
     </div>
 
     <div class="match">
-        <h3>Real Madrid vs Arsenal</h3>
-        <p>📅 18 March 2026</p>
-        <p>🏟️ Santiago Bernabéu</p>
+        <h3>France vs Germany</h3>
+        <p>📅 15 June 2026</p>
+        <p>🏟️ Los Angeles Stadium</p>
     </div>
 
     <div class="match">
-        <h3>Real Madrid vs Chelsea</h3>
-        <p>📅 28 March 2026</p>
-        <p>🏟️ Santiago Bernabéu</p>
+        <h3>Spain vs England</h3>
+        <p>📅 18 June 2026</p>
+        <p>🏟️ Dallas Stadium</p>
     </div>
 </div>
 </section>
+
 <section>
 <h2>🎫 Ticket Booking</h2>
 
-<form onsubmit="bookTicket(event)">
-    <input type="text" placeholder="Full Name" required>
+<form id="bookingForm">
+    <input type="text" id="name" placeholder="Full Name" required>
 
-    <select required>
+    <select id="match" required>
         <option value="">Select Match</option>
-        <option>Man City</option>
-        <option>Arsenal</option>
-        <option>Chelsea</option>
+        <option>Argentina vs Brazil</option>
+        <option>France vs Germany</option>
+        <option>Spain vs England</option>
     </select>
 
-    <select required>
+    <select id="seat" required>
         <option value="">Seat Type</option>
         <option>VIP</option>
         <option>Premium</option>
         <option>Regular</option>
     </select>
 
-    <input type="number" placeholder="Number of Tickets" min="1" max="6" required>
+    <input type="number" id="tickets" placeholder="Number of Tickets" min="1" max="6" required>
 
     <button type="submit">Book Now</button>
+    <p id="bookingMsg" class="success"></p>
 </form>
 </section>
+
 <section>
 <h2>💬 Fan Feedback</h2>
 
-<form onsubmit="sendFeedback(event)">
-    <input type="text" placeholder="Your Name" required>
-    <textarea rows="4" placeholder="Your Feedback..." required></textarea>
+<form id="feedbackForm">
+    <input type="text" id="fname" placeholder="Your Name" required>
+    <textarea id="feedback" rows="4" placeholder="Your Feedback..." required></textarea>
     <button type="submit">Submit Feedback</button>
+    <p id="feedbackMsg" class="success"></p>
 </form>
 </section>
+
 <footer>
-    <p>© 2026 Real Madrid Fan Portal | Hala Madrid 🤍💛</p>
+    <p>© 2026 FIFA World Cup Fan Portal 🌍</p>
 </footer>
 
 <script>
-function bookTicket(e) {
+// BOOKING
+document.getElementById("bookingForm").addEventListener("submit", function(e){
     e.preventDefault();
-    alert(" Ticket booked successfully! Confirmation sent.");
-}
 
-function sendFeedback(e) {
+    let name = document.getElementById("name").value;
+    let match = document.getElementById("match").value;
+    let seat = document.getElementById("seat").value;
+    let tickets = document.getElementById("tickets").value;
+
+    if(name && match && seat && tickets){
+        document.getElementById("bookingMsg").innerText =
+        "✅ Ticket booked successfully for " + name;
+        this.reset();
+    } else {
+        alert("Fill all fields");
+    }
+});
+
+// FEEDBACK
+document.getElementById("feedbackForm").addEventListener("submit", function(e){
     e.preventDefault();
-    alert(" Thank you for your feedback!");
-}
+
+    let name = document.getElementById("fname").value;
+    let feedback = document.getElementById("feedback").value;
+
+    if(name && feedback){
+        document.getElementById("feedbackMsg").innerText =
+        "🙏 Thanks for your feedback, " + name;
+        this.reset();
+    } else {
+        alert("Fill all fields");
+    }
+});
 </script>
 
 </body>
