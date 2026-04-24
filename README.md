@@ -5,220 +5,246 @@ A stylish and responsive front-end web project built using HTML, CSS, and JavaSc
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FIFA World Cup Tickets | Fan Portal</title>
+<title>FIFA World Cup 2026 | Premium Tickets</title>
 
 <style>
 :root {
-    --primary: #0b3d91;
-    --accent: #f5c518;
-    --white: #ffffff;
-    --dark: #111;
+    --blue:#0a1f44;
+    --blue2:#123d8c;
+    --gold:#f5c518;
 }
 
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    margin:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,var(--blue),var(--blue2));
+    color:white;
 }
-
-/* HEADER */
 header {
-    background: var(--primary);
-    color: white;
-    padding: 15px;
-    text-align: center;
+    text-align:center;
+    padding:15px;
+    font-size:22px;
 }
-
-/* HERO */
-.hero {
-    background: linear-gradient(135deg, var(--primary), #1e5ed6);
-    color: white;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* SECTION */
-section {
-    padding: 50px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
-
-/* MATCH CARDS */
 .matches {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
 }
 
-.match {
-    border: 2px solid var(--accent);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.match:hover {
-    transform: scale(1.05);
+.card {
+    background:rgba(255,255,255,0.1);
+    padding:15px;
+    border-radius:10px;
+    backdrop-filter:blur(10px);
 }
 
 /* FORM */
-form {
-    border: 2px solid var(--accent);
-    padding: 25px;
-    border-radius: 10px;
-    background: #f9f9f9;
+.form-box {
+    margin:20px;
+    padding:20px;
+    background:rgba(255,255,255,0.1);
+    border-radius:10px;
 }
 
-input, select, textarea, button {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+input,select,button {
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:6px;
 }
 
 button {
-    background: var(--accent);
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+    background:var(--gold);
+    font-weight:bold;
+    cursor:pointer;
+} */
+.seats {
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:5px;
+    margin-top:10px;
 }
 
-button:hover {
-    background: #e0b000;
+.seat {
+    padding:10px;
+    text-align:center;
+    background:white;
+    color:black;
+    cursor:pointer;
+    border-radius:5px;
 }
 
-.success {
-    color: green;
-    text-align: center;
-    font-weight: bold;
+.selected { background:green; color:white; }
+.booked { background:red; color:white; cursor:not-allowed; }
+
+/* SUMMARY */
+.summary {
+    margin-top:10px;
+    background:rgba(0,0,0,0.3);
+    padding:10px;
+    border-radius:8px;
 }
 
-/* FOOTER */
-footer {
-    background: var(--dark);
-    color: white;
-    text-align: center;
-    padding: 20px;
+/* BOOKINGS */
+.ticket {
+    background:rgba(255,255,255,0.1);
+    padding:10px;
+    margin:10px;
+    border-left:5px solid gold;
+}
+
+.payment {
+    display:none;
+    padding:20px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-    <h1>🏆 FIFA WORLD CUP 2026</h1>
-</header>
+<header>🏆 FIFA WORLD CUP 2026</header>
 
-<div class="hero">
-    <h2>⚽ Book Your Match Tickets</h2>
-    <p>Global Football Experience 🌍</p>
+<div class="matches" id="matches"></div>
+
+<div class="form-box">
+<h2>🎫 Book Ticket</h2>
+
+<input type="text" id="name" placeholder="Your Name">
+
+<select id="match"></select>
+
+<select id="seatType">
+<option value="">Seat Type</option>
+<option value="VIP">VIP ($200)</option>
+<option value="Premium">Premium ($120)</option>
+<option value="Regular">Regular ($60)</option>
+</select>
+
+<h3>Select Seats</h3>
+<div class="seats" id="seatGrid"></div>
+
+<div class="summary" id="summary">Select seats to see price</div>
+
+<button onclick="goPayment()">Proceed to Payment</button>
 </div>
 
-<section>
-<h2>Upcoming Matches</h2>
+<!-- PAYMENT PAGE -->
+<div class="payment" id="paymentPage">
+<h2>💳 Payment</h2>
 
-<div class="matches">
-    <div class="match">
-        <h3>Argentina vs Brazil</h3>
-        <p>📅 12 June 2026</p>
-        <p>🏟️ New York Stadium</p>
-    </div>
+<input type="text" placeholder="Card Number">
+<input type="text" placeholder="Expiry Date">
+<input type="text" placeholder="CVV">
 
-    <div class="match">
-        <h3>France vs Germany</h3>
-        <p>📅 15 June 2026</p>
-        <p>🏟️ Los Angeles Stadium</p>
-    </div>
-
-    <div class="match">
-        <h3>Spain vs England</h3>
-        <p>📅 18 June 2026</p>
-        <p>🏟️ Dallas Stadium</p>
-    </div>
+<button onclick="confirmBooking()">Pay Now</button>
 </div>
-</section>
 
-<section>
-<h2>🎫 Ticket Booking</h2>
-
-<form id="bookingForm">
-    <input type="text" id="name" placeholder="Full Name" required>
-
-    <select id="match" required>
-        <option value="">Select Match</option>
-        <option>Argentina vs Brazil</option>
-        <option>France vs Germany</option>
-        <option>Spain vs England</option>
-    </select>
-
-    <select id="seat" required>
-        <option value="">Seat Type</option>
-        <option>VIP</option>
-        <option>Premium</option>
-        <option>Regular</option>
-    </select>
-
-    <input type="number" id="tickets" placeholder="Number of Tickets" min="1" max="6" required>
-
-    <button type="submit">Book Now</button>
-    <p id="bookingMsg" class="success"></p>
-</form>
-</section>
-
-<section>
-<h2>💬 Fan Feedback</h2>
-
-<form id="feedbackForm">
-    <input type="text" id="fname" placeholder="Your Name" required>
-    <textarea id="feedback" rows="4" placeholder="Your Feedback..." required></textarea>
-    <button type="submit">Submit Feedback</button>
-    <p id="feedbackMsg" class="success"></p>
-</form>
-</section>
-
-<footer>
-    <p>© 2026 FIFA World Cup Fan Portal 🌍</p>
-</footer>
+<h2 style="padding-left:20px;">📄 Your Tickets</h2>
+<div id="tickets"></div>
 
 <script>
-// BOOKING
-document.getElementById("bookingForm").addEventListener("submit", function(e){
-    e.preventDefault();
+const matches = [
+ {t:"Argentina vs Brazil",d:"2026-06-12",v:"New York"},
+ {t:"France vs Germany",d:"2026-06-15",v:"LA"},
+ {t:"Spain vs England",d:"2026-06-18",v:"Dallas"}
+];
 
-    let name = document.getElementById("name").value;
-    let match = document.getElementById("match").value;
-    let seat = document.getElementById("seat").value;
-    let tickets = document.getElementById("tickets").value;
+let selectedSeats=[];
 
-    if(name && match && seat && tickets){
-        document.getElementById("bookingMsg").innerText =
-        "✅ Ticket booked successfully for " + name;
-        this.reset();
-    } else {
-        alert("Fill all fields");
-    }
-});
+// LOAD MATCHES
+function loadMatches(){
+ let html="",opt="<option value=''>Select Match</option>";
+ matches.forEach(m=>{
+  let days=Math.ceil((new Date(m.d)-new Date())/(1000*60*60*24));
+  html+=`<div class='card'><h3>${m.t}</h3>
+  <p>${m.d}</p><p>${m.v}</p><p>⏳ ${days} days left</p></div>`;
+  opt+=`<option>${m.t}</option>`;
+ });
+ document.getElementById("matches").innerHTML=html;
+ document.getElementById("match").innerHTML=opt;
+}
 
-// FEEDBACK
-document.getElementById("feedbackForm").addEventListener("submit", function(e){
-    e.preventDefault();
+function createSeats(){
+ let grid="";
+ for(let i=1;i<=30;i++){
+  grid+=`<div class='seat' onclick="toggleSeat(this)">${i}</div>`;
+ }
+ document.getElementById("seatGrid").innerHTML=grid;
+}
 
-    let name = document.getElementById("fname").value;
-    let feedback = document.getElementById("feedback").value;
+function toggleSeat(el){
+ if(el.classList.contains("booked")) return;
 
-    if(name && feedback){
-        document.getElementById("feedbackMsg").innerText =
-        "🙏 Thanks for your feedback, " + name;
-        this.reset();
-    } else {
-        alert("Fill all fields");
-    }
-});
+ el.classList.toggle("selected");
+ let num=el.innerText;
+
+ if(selectedSeats.includes(num)){
+  selectedSeats=selectedSeats.filter(s=>s!==num);
+ } else {
+  selectedSeats.push(num);
+ }
+
+ updateSummary();
+}
+function updateSummary(){
+ let type=document.getElementById("seatType").value;
+ let priceMap={VIP:200,Premium:120,Regular:60};
+
+ if(type && selectedSeats.length){
+  let total=priceMap[type]*selectedSeats.length;
+  document.getElementById("summary").innerHTML=
+  `Seats: ${selectedSeats.join(", ")}<br>💰 Total: $${total}`;
+ }
+}
+
+document.getElementById("seatType").addEventListener("change",updateSummary);
+function goPayment(){
+ if(!selectedSeats.length){
+  alert("Select seats");
+  return;
+ }
+ document.querySelector(".form-box").style.display="none";
+ document.getElementById("paymentPage").style.display="block";
+}
+function confirmBooking(){
+ let name=document.getElementById("name").value;
+ let match=document.getElementById("match").value;
+ let type=document.getElementById("seatType").value;
+
+ let ticket={
+  id:"FIFA"+Math.floor(Math.random()*99999),
+  name,match,type,seats:selectedSeats
+ };
+
+ let data=JSON.parse(localStorage.getItem("tickets"))||[];
+ data.push(ticket);
+ localStorage.setItem("tickets",JSON.stringify(data));
+
+ alert("Payment Successful 🎉");
+ displayTickets();
+ location.reload();
+}
+
+// DISPLAY
+function displayTickets(){
+ let data=JSON.parse(localStorage.getItem("tickets"))||[];
+ let html="";
+ data.forEach(t=>{
+  html+=`<div class='ticket'>
+  🎫 ${t.id}<br>
+  ${t.name} | ${t.match}<br>
+  ${t.type} | Seats: ${t.seats.join(",")}
+  </div>`;
+ });
+ document.getElementById("tickets").innerHTML=html;
+}
+
+// INIT
+loadMatches();
+createSeats();
+displayTickets();
 </script>
 
 </body>
