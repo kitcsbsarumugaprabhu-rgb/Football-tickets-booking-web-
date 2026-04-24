@@ -20,11 +20,13 @@ body {
     background:linear-gradient(135deg,var(--blue),var(--blue2));
     color:white;
 }
+
 header {
     text-align:center;
     padding:15px;
     font-size:22px;
 }
+
 .matches {
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -39,7 +41,6 @@ header {
     backdrop-filter:blur(10px);
 }
 
-/* FORM */
 .form-box {
     margin:20px;
     padding:20px;
@@ -59,7 +60,8 @@ button {
     background:var(--gold);
     font-weight:bold;
     cursor:pointer;
-} */
+}
+
 .seats {
     display:grid;
     grid-template-columns:repeat(6,1fr);
@@ -79,7 +81,6 @@ button {
 .selected { background:green; color:white; }
 .booked { background:red; color:white; cursor:not-allowed; }
 
-/* SUMMARY */
 .summary {
     margin-top:10px;
     background:rgba(0,0,0,0.3);
@@ -87,7 +88,6 @@ button {
     border-radius:8px;
 }
 
-/* BOOKINGS */
 .ticket {
     background:rgba(255,255,255,0.1);
     padding:10px;
@@ -130,7 +130,6 @@ button {
 <button onclick="goPayment()">Proceed to Payment</button>
 </div>
 
-<!-- PAYMENT PAGE -->
 <div class="payment" id="paymentPage">
 <h2>💳 Payment</h2>
 
@@ -153,7 +152,6 @@ const matches = [
 
 let selectedSeats=[];
 
-// LOAD MATCHES
 function loadMatches(){
  let html="",opt="<option value=''>Select Match</option>";
  matches.forEach(m=>{
@@ -188,6 +186,7 @@ function toggleSeat(el){
 
  updateSummary();
 }
+
 function updateSummary(){
  let type=document.getElementById("seatType").value;
  let priceMap={VIP:200,Premium:120,Regular:60};
@@ -200,6 +199,7 @@ function updateSummary(){
 }
 
 document.getElementById("seatType").addEventListener("change",updateSummary);
+
 function goPayment(){
  if(!selectedSeats.length){
   alert("Select seats");
@@ -208,6 +208,7 @@ function goPayment(){
  document.querySelector(".form-box").style.display="none";
  document.getElementById("paymentPage").style.display="block";
 }
+
 function confirmBooking(){
  let name=document.getElementById("name").value;
  let match=document.getElementById("match").value;
@@ -227,7 +228,6 @@ function confirmBooking(){
  location.reload();
 }
 
-// DISPLAY
 function displayTickets(){
  let data=JSON.parse(localStorage.getItem("tickets"))||[];
  let html="";
@@ -241,7 +241,6 @@ function displayTickets(){
  document.getElementById("tickets").innerHTML=html;
 }
 
-// INIT
 loadMatches();
 createSeats();
 displayTickets();
